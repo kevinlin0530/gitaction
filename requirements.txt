@@ -1,0 +1,15 @@
+gunicorn==21.2.0
+pymysql
+packaging
+Pillow==10.0.0
+pytz==2023.3
+requests==2.31.0
+sqlparse==0.4.4
+typing_extensions==4.7.1
+tzdata==2023.3
+urllib3
+selenium==4.2.0
+BeautifulSoup4
+fastapi ==0.103.2
+uvicorn ==0.23.2
+webdriver_manager ==4.0.1

@@ -3,7 +3,6 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-# 配置 Chrome 选项
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--incognito')

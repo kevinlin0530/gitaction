@@ -1,7 +1,7 @@
 import datetime
 import urllib.request as req
 import bs4
-import mysql.connector
+# import mysql.connector
 import redis
 import time
 
@@ -70,4 +70,4 @@ getData(pageURL)
 while count<2:
     pageURL="https://www.ptt.cc"+getData(pageURL)
     count+=1
-conn.close()
+# conn.close()

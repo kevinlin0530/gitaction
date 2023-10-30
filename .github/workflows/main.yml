@@ -1,13 +1,13 @@
 name: Run cicd Script
 
 # 推上主線後自動運行
-# on:
-#   push:
-#     branches:
-#       - main  
 on:
-  schedule:
-    - cron: '0 * * * *'  # 每小時運行
+  push:
+    branches:
+      - main  
+# on:
+#   schedule:
+#     - cron: '0 * * * *'  # 每小時運行
 jobs:
   run-selenium-script:
     runs-on: ubuntu-latest  # ubuntu

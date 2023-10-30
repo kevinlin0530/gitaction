@@ -11,14 +11,7 @@ on:
 jobs:
   run-cicd-script:
     runs-on: ubuntu-latest  # ubuntu
-
-    services:
-      redis:
-        image: redis
-        ports:
-          - localhost:8080
-        options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
-
+    
     steps:
     - name: Checkout Code  
       uses: actions/checkout@v2 

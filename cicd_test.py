@@ -62,7 +62,7 @@ def getData(url):
                     # insert_data(title_string, current_time)
             cache.set(title_string,title_string,4200) #存進redis內進行比對，資料是否有重複
     except redis.exceptions.ConnectionError as e:
-        return e
+        print(f"error{e}")
     nextLink=root.find("a", string="‹ 上頁")
     return nextLink["href"]
 

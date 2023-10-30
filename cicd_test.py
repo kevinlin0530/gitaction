@@ -44,25 +44,22 @@ def getData(url):
 
     root=bs4.BeautifulSoup(data,"html.parser")
     titles=root.find_all("div",class_="title")
-    try:
-        for title in titles:
-            if title.a != None:
-                title_string = title.a.string
-                current_time = datetime.datetime.now()
-                name = cache.get(title_string)
-                if name:
-                    name = name.decode('utf-8')
-                    if name == title_string:
-                        pass
-                    else:
-                        print(f"title:{title_string},time:{current_time}")
-                        # insert_data(title_string, current_time)
+    for title in titles:
+        if title.a != None:
+            title_string = title.a.string
+            current_time = datetime.datetime.now()
+            name = cache.get(title_string)
+            if name:
+                name = name.decode('utf-8')
+                if name == title_string:
+                    pass
                 else:
                     print(f"title:{title_string},time:{current_time}")
                     # insert_data(title_string, current_time)
-            cache.set(title_string,title_string,4200) #存進redis內進行比對，資料是否有重複
-    except redis.exceptions.ConnectionError as e:
-        print(f"error{e}")
+            else:
+                print(f"title:{title_string},time:{current_time}")
+                # insert_data(title_string, current_time)
+        cache.set(title_string,title_string,4200) #存進redis內進行比對，資料是否有重複
     nextLink=root.find("a", string="‹ 上頁")
     return nextLink["href"]
 

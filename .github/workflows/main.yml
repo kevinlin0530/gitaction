@@ -1,10 +1,13 @@
 name: Run Selenium Script
 
 # 推上主線後自動運行
+# on:
+#   push:
+#     branches:
+#       - main  
 on:
-  push:
-    branches:
-      - main  
+  schedule:
+    - cron: '0 * * * *'  # 每小時運行
 jobs:
   run-selenium-script:
     runs-on: ubuntu-latest  # ubuntu
@@ -23,8 +26,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
       working-directory: .
-# 執行程式碼
-    - name: Run Selenium Script  
+- name: Stop Redis Server
       run: |
-        python selenium_test.py
+        sudo service redis-server stop
+      continue-on-error: true  # 如果 Redis 伺服器未運行，繼續執行下一步
+
+    - name: Run cicd_test Script
+      run: |
+# 執行你的 Selenium 測試腳本
+        python cicd_test.py
       working-directory: .
+
+    - name: Start Redis Server
+      run: |
+        sudo service redis-server start

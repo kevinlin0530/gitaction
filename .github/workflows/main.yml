@@ -22,12 +22,14 @@ jobs:
 # 安裝套件
     - name: Install Dependencies 
       run: |
+        sudo apt update
+        sudo apt install redis-server
         python -m pip install --upgrade pip
         pip install -r requirements.txt
       working-directory: .
     - name: Start Redis Server
       run: |
-        sudo redis-server
+        sudo redis-server start
       continue-on-error: true  # 如果 Redis 伺服器未運行，繼續執行下一步
 #執行
     - name: Run cicd_test Script

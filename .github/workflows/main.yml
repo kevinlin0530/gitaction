@@ -29,7 +29,7 @@ jobs:
       working-directory: .
     - name: Start Redis Server
       run: |
-        sudo redis-server
+        sudo redis-server ./redis.conf
       continue-on-error: true  # 如果 Redis 伺服器未運行，繼續執行下一步
 #執行
     - name: Run cicd_test Script

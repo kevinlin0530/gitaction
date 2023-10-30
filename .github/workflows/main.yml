@@ -27,15 +27,15 @@ jobs:
         pip install -r requirements.txt
       working-directory: .
     - name: Stop Redis Server
-          run: |
-            sudo service redis-server stop
-          continue-on-error: true  # 如果 Redis 伺服器未運行，繼續執行下一步
+      run: |
+        sudo service redis-server stop
+      continue-on-error: true  # 如果 Redis 伺服器未運行，繼續執行下一步
 #執行
-        - name: Run cicd_test Script
-          run: |
-            python cicd_test.py
-          working-directory: .
+    - name: Run cicd_test Script
+      run: |
+        python cicd_test.py
+      working-directory: .
 
-        - name: Start Redis Server
-          run: |
-            sudo service redis-server start
+    - name: Start Redis Server
+      run: |
+        sudo service redis-server start

@@ -9,7 +9,7 @@ on:
 #   schedule:
 #     - cron: '0 * * * *'  # 每小時運行
 jobs:
-  run-selenium-script:
+  run-cicd-script:
     runs-on: ubuntu-latest  # ubuntu
 
     steps:
@@ -35,7 +35,6 @@ jobs:
       run: |
         python cicd_test.py
       working-directory: .
-
     - name: Start Redis Server
       run: |
         sudo service redis-server start

@@ -59,7 +59,7 @@ def getData(url):
             else:
                 print(f"title:{title_string},time:{current_time}")
                 insert_data(title_string, current_time)
-        cache.set(title_string,title_string,180) #存進redis內進行比對，資料是否有重複
+        cache.set(title_string,title_string,4200) #存進redis內進行比對，資料是否有重複
     nextLink=root.find("a", string="‹ 上頁")
     return nextLink["href"]
 

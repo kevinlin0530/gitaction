@@ -16,7 +16,7 @@ jobs:
       redis:
         image: redis
         ports:
-          - 8080:8080
+          - 6379:6379
 
     steps:
     - name: Checkout Code  
@@ -29,15 +29,13 @@ jobs:
 # 安裝套件
     - name: Install Dependencies 
       run: |
-        sudo apt update
-        sudo apt install redis-server
         python -m pip install --upgrade pip
         pip install -r requirements.txt
       working-directory: .
     - name: Start Redis Server
       run: |
         redis-cli ping
-        echo "Redis is already running on port 8080."
+        echo "Redis is already running on port 6379."
       continue-on-error: true  # 如果 Redis 伺服器未運行，繼續執行下一步
 #執行
     - name: Run cicd_test Script

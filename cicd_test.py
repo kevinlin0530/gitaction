@@ -7,7 +7,7 @@ import time
 
 class RedisCache:
     def __init__(self):
-        self.redis_client = redis.Redis(host='0.0.0.0', port=8080, db=0)
+        self.redis_client = redis.Redis(host='0.0.0.0', port=6379, db=0)
 
     def get(self, value):
         return self.redis_client.get(value)

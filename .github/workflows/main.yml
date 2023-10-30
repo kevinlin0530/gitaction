@@ -36,6 +36,7 @@ jobs:
       working-directory: .
     - name: Start Redis Server
       run: |
+        kill -9 3365
         redis-cli ping
         redis-server --port 6380
         echo "Redis is already running on port 6380."

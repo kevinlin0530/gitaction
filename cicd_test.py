@@ -1,7 +1,7 @@
 import datetime
 import urllib.request as req
 import bs4
-# import mysql.connector
+import mysql.connector
 import redis
 import time
 
@@ -20,18 +20,18 @@ class RedisCache:
     
 cache = RedisCache()
 
-# conn = mysql.connector.connect(
-#     host='127.0.0.1',
-#     user='root',
-#     password='Passw0rd!',
-#     database='git_action'
-# )
+conn = mysql.connector.connect(
+    host='127.0.0.1',
+    user='root',
+    password='Passw0rd!',
+    database='git_action'
+)
 
-# cursor = conn.cursor()
+cursor = conn.cursor()
 
-# def insert_data(title, timestamp):
-#     cursor.execute('INSERT INTO my_table (title, timestamp) VALUES (%s, %s)', (title, timestamp))
-#     conn.commit()
+def insert_data(title, timestamp):
+    cursor.execute('INSERT INTO my_table (title, timestamp) VALUES (%s, %s)', (title, timestamp))
+    conn.commit()
 
 def getData(url):
     request=req.Request(url, headers={
@@ -55,10 +55,10 @@ def getData(url):
                     pass
                 else:
                     print(f"title:{title_string},time:{current_time}")
-                    # insert_data(title_string, current_time)
+                    insert_data(title_string, current_time)
             else:
                 print(f"title:{title_string},time:{current_time}")
-                # insert_data(title_string, current_time)
+                insert_data(title_string, current_time)
         cache.set(title_string,title_string,4200) #存進redis內進行比對，資料是否有重複
     nextLink=root.find("a", string="‹ 上頁")
     return nextLink["href"]

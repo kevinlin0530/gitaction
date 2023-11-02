@@ -20,11 +20,11 @@ jobs:
       mysql:
         image: mysql:latest
         env:
-          MYSQL_ROOT_PASSWORD: your_password
-          MYSQL_DATABASE: your_database_name
+          MYSQL_ROOT_PASSWORD: "Passw0rd!"
+          MYSQL_DATABASE: "git_action"
         ports:
           - 3306:3306
-          
+
     steps:
     - name: Checkout Code  
       uses: actions/checkout@v2 

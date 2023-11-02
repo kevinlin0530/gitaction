@@ -25,7 +25,6 @@ conn = mysql.connector.connect(
     user='root',
     password='Passw0rd!',
     database='git_action',
-    port=3306,
 )
 
 cursor = conn.cursor()

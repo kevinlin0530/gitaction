@@ -8,9 +8,9 @@ on:
 # on:
 #   schedule:
 #     - cron: '0 * * * *'  # 每小時運行
-# jobs:
-#   run-cicd-script:
-#     runs-on: ubuntu-latest  # ubuntu
+jobs:
+  run-cicd-script:
+    runs-on: ubuntu-latest  # ubuntu
 
     services:
       redis:

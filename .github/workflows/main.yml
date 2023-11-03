@@ -43,6 +43,7 @@ jobs:
     - name: Connect to MySQL
       run: |
         mysql -h 127.0.0.1 -P 3306 -u root -pPassw0rd!  -e "CREATE TABLE git_action.my_table (title VARCHAR(255), timestamp DATETIME);"
+      continue-on-error: true
     - name: Start Redis Server
       run: |
         echo "Redis is already running on port 6379."
@@ -55,3 +56,7 @@ jobs:
     - name: Stop Redis Server
       run: |
         echo "Redis will be stopped automatically."
+# 資料庫搜尋
+    - name: Query MySQL Data
+      run: |
+        mysql -h 127.0.0.1 -P 3306 -u root -pPassw0rd! -e "SELECT * FROM git_action.my_table;"

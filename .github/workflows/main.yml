@@ -32,6 +32,13 @@ jobs:
         pip install -r requirements.txt
       working-directory: .
     - name: Start Mysql server
+      env:
+        DB_HOST: 127.0.0.1
+        DB_CONNECTION: mysql
+        DB_DATABASE: git_action
+        DB_PORT: 3306
+        DB_USER: root
+        DB_PASSWORD: Passw0rd!
       run: |
         sudo service mysql start
         echo "Mysql is already running"

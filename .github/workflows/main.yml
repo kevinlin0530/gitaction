@@ -1,16 +1,16 @@
 name: Run cicd Script
 
 # 推上主線後自動運行
-# on:
-#   push:
-#     branches:
-#       - main  
 on:
-  schedule:
-    - cron: '0 * * * *'  # 每小時運行
-jobs:
-  run-cicd-script:
-    runs-on: ubuntu-latest  # ubuntu
+  push:
+    branches:
+      - main  
+# on:
+#   schedule:
+#     - cron: '0 * * * *'  # 每小時運行
+# jobs:
+#   run-cicd-script:
+#     runs-on: ubuntu-latest  # ubuntu
 
     services:
       redis:

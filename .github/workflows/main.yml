@@ -31,6 +31,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
       working-directory: .
+    - name:
+      - run: |
+      sudo /etc/init.d/mysql start
+      echo "Mysql is already running"
     - name: Start Redis Server
       run: |
         echo "Redis is already running on port 6379."

@@ -21,7 +21,7 @@ class RedisCache:
 cache = RedisCache()
 
 conn = mysql.connector.connect(
-    host='mysql',
+    host='127.0.0.1',
     user='root',
     password='Passw0rd!',
     database = 'git_action',

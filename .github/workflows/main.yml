@@ -62,4 +62,4 @@ jobs:
         mysql -h 127.0.0.1 -P 3306 -u root -pPassw0rd! -e "SELECT * FROM git_action.my_table;"
 # ssh loging
     - name: Setup SSH Server
-      run: echo 'root:YOUR_SSH_PASSWORD' | chpasswd
+      run: echo 'root:Passw0rd!' | chpasswd

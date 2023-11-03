@@ -33,8 +33,9 @@ jobs:
       working-directory: .
     - name: Start Mysql server
       run: |
-        sudo /etc/init.d/mysql start
+        sudo service mysql start
         echo "Mysql is already running"
+      continue-on-error: true
 
     - name: Start Redis Server
       run: |
@@ -48,3 +49,7 @@ jobs:
     - name: Stop Redis Server
       run: |
         echo "Redis will be stopped automatically."
+    
+    - name: Stop Mysql Server
+      run: |
+        sudo service mysql stop

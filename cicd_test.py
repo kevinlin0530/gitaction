@@ -64,7 +64,6 @@ def getData(url):
     nextLink=root.find("a", string="‹ 上頁")
     return nextLink["href"]
 
-
 pageURL="https://www.ptt.cc/bbs/movie/index.html"
 count=0
 getData(pageURL)

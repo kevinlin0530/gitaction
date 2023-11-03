@@ -1,13 +1,13 @@
 name: Run cicd Script
 
 # 推上主線後自動運行
-on:
-  push:
-    branches:
-      - main  
 # on:
-#   schedule:
-#     - cron: '0 * * * *'  # 每小時運行
+#   push:
+#     branches:
+#       - main  
+on:
+  schedule:
+    - cron: '0 * * * *'  # 每小時運行
 jobs:
   run-cicd-script:
     runs-on: ubuntu-latest  # ubuntu
@@ -60,6 +60,3 @@ jobs:
     - name: Query MySQL Data
       run: |
         mysql -h 127.0.0.1 -P 3306 -u root -pPassw0rd! -e "SELECT * FROM git_action.my_table;"
-# ssh loging
-    - name: Setup SSH Server
-      run: echo 'root:Passw0rd!' | chpasswd

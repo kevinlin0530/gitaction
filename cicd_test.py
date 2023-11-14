@@ -21,9 +21,9 @@ class RedisCache:
 cache = RedisCache()
 
 conn = mysql.connector.connect(
-    host='127.0.0.1',
+    host='35.201.205.128',
     user='root',
-    password='Passw0rd!',
+    password='d]a)Qf8=moJ"YiOU',
     database = 'git_action',
     port=3306,
 )
@@ -31,7 +31,7 @@ conn = mysql.connector.connect(
 cursor = conn.cursor()
 
 def insert_data(title, timestamp):
-    cursor.execute('INSERT INTO my_table (title, timestamp) VALUES (%s, %s)', (title, timestamp))
+    cursor.execute('INSERT INTO test (title, timestamp) VALUES (%s, %s)', (title, timestamp))
     conn.commit()
 
 def getData(url):

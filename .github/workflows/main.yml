@@ -1,6 +1,6 @@
 name: Run cicd Script
 
-推上主線後自動運行
+#推上主線後自動運行
 on:
   push:
     branches:

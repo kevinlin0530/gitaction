@@ -39,6 +39,7 @@ jobs:
 #執行
     - name: Run cicd_test Script
       run: |
+        echo "$GCP_KEY" > keyfile.json
         python cicd_test.py
       working-directory: .
     - name: Stop Redis Server

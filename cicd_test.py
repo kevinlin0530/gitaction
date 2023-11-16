@@ -27,10 +27,6 @@ conn = mysql.connector.connect(
     user='root',
     password='d]a)Qf8=moJ"YiOU',
     database = 'gitaction',
-    option_files=gcp_sa_key,
-    charset='utf8',
-    use_pure=True,
-    connect_timeout=15,
 )
 
 cursor = conn.cursor()

@@ -11,7 +11,8 @@ on:
 jobs:
   run-cicd-script:
     runs-on: ubuntu-latest  # ubuntu
-
+    env:
+        GCP_SA_KEY: ${{ secrets.GCP_KEY }}
     services:
       redis:
         image: redis
@@ -37,8 +38,6 @@ jobs:
       continue-on-error: true  # 如果 Redis 伺服器未運行，繼續執行下一步
 #執行
     - name: Run cicd_test Script
-      env:
-        GCP_SA_KEY: ${{ secrets.GCP_KEY }}
       run: |
         python cicd_test.py
       working-directory: .

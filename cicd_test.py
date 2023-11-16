@@ -4,6 +4,7 @@ import bs4
 import mysql.connector
 import redis
 import time
+import os
 
 class RedisCache:
     def __init__(self):
@@ -20,11 +21,16 @@ class RedisCache:
     
 cache = RedisCache()
 
+gcp_sa_key = os.environ.get('GCP_KEY')
 conn = mysql.connector.connect(
     host='35.201.205.128',
     user='root',
     password='d]a)Qf8=moJ"YiOU',
     database = 'gitaction',
+    option_files=gcp_sa_key,
+    charset='utf8',
+    use_pure=True,
+    connect_timeout=15,
 )
 
 cursor = conn.cursor()

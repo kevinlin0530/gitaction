@@ -11,6 +11,8 @@ on:
 jobs:
   run-cicd-script:
     runs-on: ubuntu-latest  # ubuntu
+    env:
+        GCP_KEY: ${{ secrets.GCP_KEY }}
     services:
       redis:
         image: redis

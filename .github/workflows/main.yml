@@ -32,6 +32,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
       working-directory: .
+    - name: Debug GitHub Actions IP
+      run: echo "GitHub Actions IP: ${{ runner.ip }}"
     - name: Start Redis Server
       run: |
         echo "Redis is already running on port 6379."

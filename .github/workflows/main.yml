@@ -34,7 +34,8 @@ jobs:
       working-directory: .
     - name: Debug GitHub Actions IP
       run: |
-        echo "GitHub Actions IP: ${{ runner.ip }}"
+        ip a
+        route
     - name: Start Redis Server
       run: |
         echo "Redis is already running on port 6379."

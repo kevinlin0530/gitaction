@@ -25,9 +25,9 @@ gcp_sa_key = os.environ.get('GCP_KEY')
 conn = mysql.connector.connect(
     host='35.201.205.128',
     user='root',
-    password='d]a)Qf8=moJ"YiOU',
+    # password='d]a)Qf8=moJ"YiOU',
+    password=gcp_sa_key,
     database = 'gitaction',
-    option_files=gcp_sa_key,
 )
 
 cursor = conn.cursor()

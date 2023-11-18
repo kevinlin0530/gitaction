@@ -14,6 +14,15 @@ jobs:
     env:
         GCP_KEY: ${{ secrets.GCP_KEY }}
     services:
+      mysql:
+        image: mysql:latest
+        environment:
+          MYSQL_ROOT_PASSWORD: 'd]a)Qf8=moJ"YiOU'
+          MYSQL_DATABASE: gitaction
+        ports:
+          - 3306:3306
+        extra_hosts:
+          - "root:35.201.205.128"
       redis:
         image: redis
         ports:

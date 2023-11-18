@@ -21,7 +21,6 @@ class RedisCache:
     
 cache = RedisCache()
 
-gcp_sa_key = os.environ.get('GCP_KEY')
 conn = mysql.connector.connect(
     host='35.201.205.128',
     user='root',

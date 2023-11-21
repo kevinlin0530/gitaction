@@ -42,7 +42,7 @@ jobs:
         pip install -r requirements.txt
       working-directory: .
     - name: Check Runner IP
-      run: echo "Runner IP:" ${{ runner.ip }}
+      run: echo ${{ runner.ip }}
     - name: Set up Database Connection
       run: |
         echo $DB_CONNECTION_INFO > db_connection_info.json

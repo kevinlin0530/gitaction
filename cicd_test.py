@@ -27,6 +27,7 @@ conn = mysql.connector.connect(
     user='root',
     password='d]a)Qf8=moJ"YiOU',
     database = 'gitaction',
+    port = 3306,
 )
 
 cursor = conn.cursor()

@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest  # ubuntu
     env:
         GCP_KEY: ${{ secrets.GCP_KEY }}
+        DB_CONNECTION_INFO: ${{ secrets.DB_CONNECTION_INFO }}
     services:
       redis:
         image: redis
@@ -32,10 +33,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
       working-directory: .
-    - name: Debug GitHub Actions IP
+      
+    - name: Set up Database Connection
       run: |
-        ip a
-        route
+        echo $DB_CONNECTION_INFO > db_connection_info.json
+      shell: bash
+
     - name: Start Redis Server
       run: |
         echo "Redis is already running on port 6379."

@@ -13,7 +13,11 @@ jobs:
     runs-on: ubuntu-latest  # ubuntu
     env:
         GCP_KEY: ${{ secrets.GCP_KEY }}
-        DB_CONNECTION_INFO: ${{ secrets.DB_CONNECTION_INFO }}
+        DB_HOST: '35.201.205.128'
+        DB_USER: root
+        DB_PASSWORD: 'd]a)Qf8=moJ"YiOU'
+        DB_NAME: 'gitaction'
+        DB_PORT: 3306
     # services:
     #   redis:
     #     image: redis
@@ -46,7 +50,7 @@ jobs:
 #執行
     - name: Run cicd_test Script
       run: |
-        python cicd_sql.py
+        python cicd_test.py
       working-directory: .
     - name: Stop Redis Server
       run: |

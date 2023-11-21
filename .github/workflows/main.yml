@@ -18,11 +18,11 @@ jobs:
         DB_PASSWORD: 'd]a)Qf8=moJ"YiOU'
         DB_NAME: 'gitaction'
         DB_PORT: 3306
-    # services:
-    #   redis:
-    #     image: redis
-    #     ports:
-    #       - 6379:6379
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
     steps:
     - name: Checkout Code  
       uses: actions/checkout@v2 

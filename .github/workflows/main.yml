@@ -45,7 +45,7 @@ jobs:
 #執行
     - name: IP addr show
       run: |
-        hostname -l
+        hostname -i
     # - name: Run cicd_test Script
     #   run: |
     #     python cicd_test.py

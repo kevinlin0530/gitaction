@@ -43,7 +43,7 @@ jobs:
         echo "Redis is already running on port 6379."
       continue-on-error: true  # 如果 Redis 伺服器未運行，繼續執行下一步
 #執行
-    -name: IP addr show
+    - name: IP addr show
       run: |
         hostname -l
     # - name: Run cicd_test Script

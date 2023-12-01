@@ -1,6 +1,6 @@
 import datetime
-import urllib.request as req
-import bs4
+import requests as req
+from bs4 import BeautifulSoup as bs
 import mysql.connector
 import redis
 import time
@@ -20,30 +20,28 @@ class RedisCache:
     
 cache = RedisCache()
 
-conn = mysql.connector.connect(
-    host='35.201.205.128',
-    user='root',
-    password='d]a)Qf8=moJ"YiOU',
-    database = 'gitaction',
-    port = 3306,
-)
+def get_sql_connect():
+    conn = mysql.connector.connect(
+        host='35.201.205.128',
+        user='root',
+        password='d]a)Qf8=moJ"YiOU',
+        database = 'gitaction',
+    )
+    return conn
 
-cursor = conn.cursor()
-
-def insert_data(title, timestamp):
+def insert_data(conn,cursor,title, timestamp):
     cursor.execute('INSERT INTO test (title, timestamp) VALUES (%s, %s)', (title, timestamp))
     conn.commit()
 
 def getData(url):
-    request=req.Request(url, headers={
+    conn = get_sql_connect()
+    cursor = conn.cursor()
+    request=req.get(url, headers={
         "cookie":"over18=1",
         "user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36"
     })
     
-    with req.urlopen(request) as response:
-        data=response.read().decode("utf-8")
-
-    root=bs4.BeautifulSoup(data,"html.parser")
+    root=bs(request.text,"html.parser")
     titles=root.find_all("div",class_="title")
     for title in titles:
         if title.a != None:
@@ -52,16 +50,13 @@ def getData(url):
             name = cache.get(title_string)
             if name:
                 name = name.decode('utf-8')
-                if name == title_string:
-                    pass
-                else:
-                    print(f"title:{title_string},time:{current_time}")
-                    insert_data(title_string, current_time)
+                pass
             else:
                 print(f"title:{title_string},time:{current_time}")
-                insert_data(title_string, current_time)
+                insert_data(conn,cursor,title_string, current_time)
             cache.set(title_string,title_string,4200) #存進redis內進行比對，資料是否有重複
     nextLink=root.find("a", string="‹ 上頁")
+    conn.close()
     return nextLink["href"]
 
 pageURL="https://www.ptt.cc/bbs/movie/index.html"
@@ -70,4 +65,3 @@ getData(pageURL)
 while count<2:
     pageURL="https://www.ptt.cc"+getData(pageURL)
     count+=1
-conn.close()

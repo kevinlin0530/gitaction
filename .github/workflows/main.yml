@@ -38,11 +38,6 @@ jobs:
         pip install -r requirements.txt
       working-directory: .
 
-    # - name: Set up Database Connection
-    #   run: |
-    #     echo $DB_CONNECTION_INFO > db_connection_info.json
-    #   shell: bash
-
     - name: Start Redis Server
       run: |
         echo "Redis is already running on port 6379."

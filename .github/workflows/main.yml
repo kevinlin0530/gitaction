@@ -46,9 +46,9 @@ jobs:
     - name: IP addr
       run: |
         hostname -i
-    # - name: Run cicd_test Script
-    #   run: |
-    #     python cicd_test.py
+    - name: Run cicd_test Script
+      run: |
+        python cicd_test.py
       working-directory: .
     - name: Stop Redis Server
       run: |

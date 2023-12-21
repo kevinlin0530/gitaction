@@ -20,22 +20,22 @@ class RedisCache:
     
 cache = RedisCache()
 
-def get_sql_connect():
-    conn = mysql.connector.connect(
-        host='35.201.205.128',
-        user='root',
-        password='d]a)Qf8=moJ"YiOU',
-        database = 'gitaction',
-    )
-    return conn
+# def get_sql_connect():
+#     conn = mysql.connector.connect(
+#         host='35.201.205.128',
+#         user='root',
+#         password='d]a)Qf8=moJ"YiOU',
+#         database = 'gitaction',
+#     )
+#     return conn
 
 def insert_data(conn,cursor,title, timestamp):
     cursor.execute('INSERT INTO test (title, timestamp) VALUES (%s, %s)', (title, timestamp))
     conn.commit()
 
 def getData(url):
-    conn = get_sql_connect()
-    cursor = conn.cursor()
+    # conn = get_sql_connect()
+    # cursor = conn.cursor()
     request=req.get(url, headers={
         "cookie":"over18=1",
         "user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36"
@@ -53,10 +53,10 @@ def getData(url):
                 pass
             else:
                 print(f"title:{title_string},time:{current_time}")
-                insert_data(conn,cursor,title_string, current_time)
+                # insert_data(conn,cursor,title_string, current_time)
             cache.set(title_string,title_string,4200) #存進redis內進行比對，資料是否有重複
     nextLink=root.find("a", string="‹ 上頁")
-    conn.close()
+    # conn.close()
     return nextLink["href"]
 
 pageURL="https://www.ptt.cc/bbs/movie/index.html"

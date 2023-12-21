@@ -1,13 +1,13 @@
 name: Run cicd Script
 
 #推上主線後自動運行
-on:
-  push:
-    branches:
-      - main  
 # on:
-#   schedule:
-#     - cron: '* * * * 1'  # 每周一運行
+#   push:
+#     branches:
+#       - main  
+on:
+  schedule:
+    - cron: '* 1 * * *'  # 每小時
 jobs:
   run-cicd-script:
     runs-on: ubuntu-latest  # ubuntu

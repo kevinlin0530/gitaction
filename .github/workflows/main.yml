@@ -7,17 +7,17 @@ name: Run cicd Script
 #       - main  
 on:
   schedule:
-    - cron: '* 1 * * *'  # 每小時
+    - cron: '0 * * * *'  # 每小時
 jobs:
   run-cicd-script:
     runs-on: ubuntu-latest  # ubuntu
-    env:
-        GCP_KEY: ${{ secrets.GCP_KEY }}
-        DB_HOST: '35.201.205.128'
-        DB_USER: root
-        DB_PASSWORD: 'd]a)Qf8=moJ"YiOU'
-        DB_NAME: 'gitaction'
-        DB_PORT: 3306
+    # env:
+    #     GCP_KEY: ${{ secrets.GCP_KEY }}
+    #     DB_HOST: '35.201.205.128'
+    #     DB_USER: root
+    #     DB_PASSWORD: 'd]a)Qf8=moJ"YiOU'
+    #     DB_NAME: 'gitaction'
+    #     DB_PORT: 3306
     services:
       redis:
         image: redis

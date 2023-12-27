@@ -57,7 +57,10 @@ def getData(url):
             cache.set(title_string,title_string,4200) #存進redis內進行比對，資料是否有重複
     nextLink=root.find("a", string="‹ 上頁")
     # conn.close()
-    return nextLink["href"]
+    if nextLink["href"]:
+        return nextLink["href"]
+    else:
+        return None
 
 pageURL="https://www.ptt.cc/bbs/movie/index.html"
 count=0

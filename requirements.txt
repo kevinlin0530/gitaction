@@ -10,7 +10,7 @@ tzdata==2023.3
 urllib3
 selenium==4.2.0
 BeautifulSoup4
-fastapi ==0.103.2
+fastapi ==0.109.1
 uvicorn ==0.23.2
 webdriver_manager ==4.0.1
 redis

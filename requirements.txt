@@ -1,4 +1,4 @@
-gunicorn==21.2.0
+gunicorn==22.0.0
 pymysql
 packaging
 Pillow==10.0.0
